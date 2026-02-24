@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelX | Discover Your Dream Destination</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+      <style>   .book-btn {
+    background-color: #ff7a00;   /* orange */
+    color: white;
+    border: none;
+}
+
+.book-btn:hover {
+    background-color: #e66a00;
+}
+.card {
+    border: none;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card img {
+    transition: transform 0.4s ease;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card:hover img {
+    transform: scale(1.08);
+}
+
+/* Optional: Smooth button animation */
+.book-btn {
+    transition: all 0.3s ease;
+}
+
+.card:hover .book-btn {
+    background-color: #ff9a2e;
+    transform: scale(1.05);
+}
+.parallax-section {
+  position: relative;
+  height: 500px;
+
+  background-image: url('../para.jpg'); /* your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;   /* ⭐ REAL PARALLAX */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  text-align: center;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* dark overlay */
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.parallax-content h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.parallax-content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.parallax-section {
+  margin-top: 80px;   
+}
+.active-filter {
+  background-color: #ff7a00 !important;
+  color: white !important;
+  border-color: #ff7a00 !important;
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.1);
+  color: white;
+}
+.testimonial-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  transition: 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff7a00;
+}
+</style>
+</head>
+<body>
+        <!--start navbar-->
+     <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="../logo.jpg" class="d-block w-100" alt="logo" height="70" width="400px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html/#about">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "  href="#">PACKAGE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">EVENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">CONTACT US</a>
+        </li>
+        
+        </li>
+        <li class="nav-item">
+          <a href="#"></a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+
+
+  <!-- Login Modal -->
+  <button class="btn book-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+  Login
+</button>
+
+
+    </div>
+  </div>
+</nav>
+     <!-- stop navbar -->
+    
+ <div class="container mt-5">
+  <div class="row g-4 justify-content-center">
+    <div class="text-center mb-4">
+
+  <button class="btn btn-outline-warning me-2 active-filter"
+          onclick="filterPackages('all', this)">
+    All
+  </button>
+
+  <button class="btn btn-outline-warning me-2"
+          onclick="filterPackages('europe', this)">
+    Europe
+  </button>
+
+  <button class="btn btn-outline-warning me-2"
+          onclick="filterPackages('asia', this)">
+    Asia
+  </button>
+
+  <button class="btn btn-outline-warning me-2"
+          onclick="filterPackages('middleeast', this)">
+    Middle East
+  </button>
+
+  <button class="btn btn-outline-warning"
+          onclick="filterPackages('island', this)">
+    Island
+  </button>
+
+</div>
+    <!-- Card 1 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="europe">
+      <div class="card h-100 ">
+        <img src="../paris.jpg" class="card-img-top" alt="Paris">
+        <div class="card-body text-center">
+          <h5 class="card-title">Paris</h5>
+          <p class="card-text">The city of love and timeless elegance.</p>
+          <a href="#" class="btn book-btn ">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="middleeast">
+      <div class="card h-100 ">
+        <img src="../dubai.jpg" class="card-img-top" alt="Dubai">
+        <div class="card-body text-center">
+        
+          <h5 class="card-title">Dubai</h5>
+          <p class="card-text">Luxury, skyscrapers, and desert adventures.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+     <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="asia">
+      <div class="card h-100 ">
+        <img src="../bali.jpg" class="card-img-top" alt="Bali">
+        <div class="card-body text-center">
+          <h5 class="card-title">Bali</h5>
+          <p class="card-text">Tropical paradise with stunning beaches.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="europe">
+      <div class="card h-100 ">
+        <img src="../rome.jpg" class="card-img-top" alt="Rome">
+        <div class="card-body text-center">
+          <h5 class="card-title">Rome</h5>
+          <p class="card-text">Walk through ancient history and culture.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="island">
+      <div class="card h-100 ">
+        <img src="../maldives.jpg" class="card-img-top" alt="Maldives">
+        <div class="card-body text-center">
+          <h5 class="card-title">Maldives</h5>
+          <p class="card-text">Crystal clear waters and luxury resorts.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+   <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="asia">
+      <div class="card h-100 ">
+        <img src="../singapore.jpg" class="card-img-top" alt="Singapore">
+        <div class="card-body text-center">
+          <h5 class="card-title">Singapore</h5>
+          <p class="card-text">Modern skyline with vibrant culture.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="asia">
+      <div class="card h-100 ">
+        <img src="../thai.jpg" class="card-img-top" alt="Thailand">
+        <div class="card-body text-center">
+          <h5 class="card-title">Thailand</h5>
+          <p class="card-text">Exotic beaches and rich traditions.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="middleeast">
+      <div class="card h-100 ">
+        <img src="../turkey.jpg" class="card-img-top" alt="Turkey">
+        <div class="card-body text-center">
+          <h5 class="card-title">Turkey</h5>
+          <p class="card-text">Where East meets West beautifully.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+   <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="europe">
+      <div class="card h-100 ">
+        <img src="../switzerland.jpg" class="card-img-top" alt="Switzerland">
+        <div class="card-body text-center">
+          <h5 class="card-title">Switzerland</h5>
+          <p class="card-text">Snowy mountains and scenic landscapes.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="asia">
+      <div class="card h-100 ">
+        <img src="../japan.jpg" class="card-img-top" alt="Japan">
+        <div class="card-body text-center">
+          <h5 class="card-title">Japan</h5>
+          <p class="card-text">Tradition and technology in harmony.</p>
+          <a href="#" class="btn book-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="europe">
+  <div class="card h-100 ">
+    <img src="../greece.jpg" class="card-img-top" alt="Greece">
+    <div class="card-body text-center">
+      <h5 class="card-title">Greece</h5>
+      <p class="card-text">Whitewashed villages, blue seas, and ancient myths.</p>
+      <a href="#" class="btn book-btn">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 package-card" data-category="africa">
+  <div class="card h-100 ">
+    <img src="../southafrica.jpg" class="card-img-top" alt="South Africa">
+    <div class="card-body text-center">
+      <h5 class="card-title">South Africa</h5>
+      <p class="card-text">Wild safaris, dramatic landscapes, and vibrant culture.</p>
+      <a href="#" class="btn book-btn">Book Now</a>
+    </div>
+  </div>
+</div><br><br>
+
+
+  </div>
+</div>
+<!-- PARALLAX SECTION -->
+<section class="parallax-section">
+
+  <div class="parallax-overlay"></div>
+
+  <div class="parallax-content text-center">
+    <h1>Your Journey, Our Commitment</h1>
+    <p>
+      At TravelX, we believe in crafting journeys that go beyond the ordinary.
+      From seamless visa services to unforgettable tour experiences,
+      we make every trip extraordinary.
+    </p>
+
+    <a href="#" class="btn btn-success px-4 py-2 mt-3">
+      Contact Now
+    </a>
+  </div>
+
+</section>
+<!-- TESTIMONIAL SECTION -->
+<section class="container my-5">
+
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">What Our Clients Say</h2>
+    <p class="text-muted">Real experiences from our happy travelers</p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Testimonial 1 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="testimonial-card p-4 h-100 text-center">
+        <img src="../user1.jpg" class="testimonial-img mb-3" alt="Client">
+        <h5 class="mb-1">Rahul Sharma</h5>
+        <div class="text-warning mb-2">
+          ★★★★★
+        </div>
+        <p class="text-muted">
+          TravelX made our Dubai trip absolutely perfect. Everything was well
+          organized and stress-free. Highly recommended!
+        </p>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="testimonial-card p-4 h-100 text-center">
+        <img src="../user2.jpg" class="testimonial-img mb-3" alt="Client">
+        <h5 class="mb-1">Aisha Khan</h5>
+        <div class="text-warning mb-2">
+          ★★★★★
+        </div>
+        <p class="text-muted">
+          The Bali honeymoon package was magical. Hotels, tours, everything
+          was perfectly planned. Thank you TravelX!
+        </p>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="col-lg-4 col-md-6">
+      <div class="testimonial-card p-4 h-100 text-center">
+        <img src="../user3.jpg" class="testimonial-img mb-3" alt="Client">
+        <h5 class="mb-1">Mohammed Ali</h5>
+        <div class="text-warning mb-2">
+          ★★★★★
+        </div>
+        <p class="text-muted">
+          Visa process was super smooth. Professional service and 24/7 support.
+          Definitely booking again!
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+        <!-- START FOOTER -->
+<footer id="contact" class="text-light pt-5 pb-4" style="background-color:#0c0c0c;">
+  <div class="container">
+    <div class="row">
+
+      <!-- Explore -->
+      <div class="col-md-3">
+        <h5 class="fw-bold mb-3">Explore</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Countries</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Cities</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Regions</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Inspiration</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Trending Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Booking -->
+      <div class="col-md-3">
+        <h5 class="fw-bold mb-3">Booking</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Book Now</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Deals & Rewards</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Car Rentals</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Sign In/Register</a></li>
+          <li><a href="#" class="text-light text-decoration-none">My Account</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="col-md-3">
+        <h5 class="fw-bold mb-3">Company</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Career</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Our Story</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Partners</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="col-md-3">
+        <h5 class="fw-bold mb-3">Support</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light text-decoration-none">Contact</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Live Chat</a></li>
+          <li><a href="#" class="text-light text-decoration-none">FAQ</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Report an Issue</a></li>
+        </ul>
+
+        <!-- Social Icons -->
+        <div class="mt-3">
+          <i class="bi bi-instagram me-3"></i>
+          <i class="bi bi-pinterest me-3"></i>
+          <i class="bi bi-facebook"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="row mt-4 pt-3 border-top border-light">
+      <div class="col-md-6">
+        <p class="mb-0">© 2026 ExploreMore. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <a href="#" class="text-light text-decoration-none me-3">Terms & Conditions</a>
+        <a href="#" class="text-light text-decoration-none me-3">Privacy Policy</a>
+        <a href="#" class="text-light text-decoration-none">Cookies Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+<!-- END FOOTER -->
+ <!-- LOGIN MODAL -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+<div class="modal-header">
+
+        <h5 class="modal-title">Login to Travel X</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm">
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input type="email" class="form-control" placeholder="Enter email">
+    </div>
+
+    <div class="mb-3">
+  <label class="form-label">Password</label>
+
+  <div class="input-group">
+    <input type="password" id="loginPassword" class="form-control" placeholder="Password">
+    <span class="input-group-text" style="cursor:pointer;" onclick="togglePassword('loginPassword','loginIcon')">
+      <i id="loginIcon" class="bi bi-eye"></i>
+    </span>
+  </div>
+
+</div>
+
+    <button type="submit" class="btn book-btn w-100 mb-3">
+      Login
+    </button>
+
+    <div class="text-center">
+      <small>
+        Don't have an account?
+        <a href="#" onclick="showSignup()" class="text-warning text-decoration-none">
+          Sign Up
+        </a>
+      </small>
+    </div>
+  </form>
+
+
+  <!-- SIGNUP FORM (Hidden First) -->
+  <form id="signupForm" style="display: none;">
+    <div class="mb-3">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control" placeholder="Enter name">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" placeholder="Enter email">
+    </div>
+
+    <div class="mb-3">
+  <label class="form-label">Password</label>
+
+  <div class="input-group">
+    <input type="password" id="signupPassword" class="form-control" placeholder="Create password">
+    <span class="input-group-text" style="cursor:pointer;" onclick="togglePassword('signupPassword','signupIcon')">
+      <i id="signupIcon" class="bi bi-eye"></i>
+    </span>
+  </div>
+
+</div>
+    <button type="submit" class="btn book-btn w-100 mb-3">
+      Sign Up
+    </button>
+
+    <div class="text-center">
+      <small>
+        Already have an account?
+        <a href="#" onclick="showLogin()" class="text-warning text-decoration-none">
+          Login
+        </a>
+      </small>
+    </div>
+  </form>
+
+</div>
+
+    </div>
+  </div>
+</div>
+<script>
+  function showSignup() {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+  }
+
+  function showLogin() {
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+  }
+  function togglePassword(inputId, iconId) {
+    const password = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (password.type === "password") {
+      password.type = "text";
+      icon.classList.remove("bi-eye");
+      icon.classList.add("bi-eye-slash");
+    } else {
+      password.type = "password";
+      icon.classList.remove("bi-eye-slash");
+      icon.classList.add("bi-eye");
+    }
+  }
+
+  function showSignup() {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+  }
+
+  function showLogin() {
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+  }
+  function filterPackages(category, button) {
+
+  let cards = document.querySelectorAll('.package-card');
+  let buttons = document.querySelectorAll('.btn-outline-warning');
+
+  // Remove active style
+  buttons.forEach(btn => btn.classList.remove('active-filter'));
+
+  // Add active style to clicked button
+  button.classList.add('active-filter');
+
+  // Filter cards
+  cards.forEach(card => {
+
+    if (category === "all" || card.dataset.category === category) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+
+  });
+}
+</script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<!-- Sticky WhatsApp Button -->
+<a href="https://wa.me/917306047845" 
+   class="whatsapp-float" 
+   target="_blank">
+   <i class="bi bi-whatsapp"></i>
+</a>
+</body>
+</html>
